@@ -47,7 +47,9 @@ The aim is to discourage unhealthy competition between generator and discriminat
   - Doing this initialization is beneficial, and related to the scale-invariant SGD &larr; often the learning rate is too big and too small at the same time (the mainly used optimized RMSProp and Adam normilize a gradient update by its estimated standard deviation, making the update independent of the scale of the parameter. However, if some parameters have a larger dynamic range than others, they'll take more time to adjust). Using this approach lead to the same _learning speed_ for all the parameters.
 - Pixelwise feature vector normalization in generator
   - Feature vectors of each pixel in the generator (after each convolutional layer) are normalized to unit length, using the following formula:
+
   ![eq1](img/karras2018_eq1.png)
+
   where:<br>&epsilon; = 10<sup>-8</sup><br>a<sub>x,y</sub> is the value of the pixel (x,y)<br>b<sub>x,y</sub> is the new value<br>N is the number of feature maps (channels)
   - This normalization does not change the results much, but prevents the escalation of the gradient very effectively when needed.
 
