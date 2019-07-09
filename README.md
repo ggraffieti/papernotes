@@ -12,3 +12,5 @@ Inspired by [many people who already shared their paper notes on the web](https:
 ### Generative Adversarial Networks
 - **HD GAN**
   - [Progressive Growing of GANs for Improved Quality, Stability and Variation, _Karras et al._ (2018)](GAN/HD_GAN/Karras_2018.md)
+
+### Misc
