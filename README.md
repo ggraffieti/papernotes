@@ -2,11 +2,13 @@ Inspired by [many people who already shared their paper notes on the web](https:
 
 **Dicussions and corrections are always welcome!**
 
-# Artificial Intelligence
+---
 
-# Machine Learning
-## Deep Learning
+### Artificial Intelligence
 
-# Generative Adversarial Networks
-## HD GAN
-- [Progressive Growing of GANs for Improved Quality, Stability and Variation](GAN/HD_GAN/Karras_2018.md)
+### Machine Learning
+- **Deep Learning**
+
+### Generative Adversarial Networks
+- **HD GAN**
+  - [Progressive Growing of GANs for Improved Quality, Stability and Variation, _Karras et al._ (2018)](GAN/HD_GAN/Karras_2018.md)
