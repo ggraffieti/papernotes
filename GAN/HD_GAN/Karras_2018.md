@@ -10,7 +10,9 @@ Four main contributions:
 - Several implementation details that are important for discouraging unhealthy competition between generator and discriminator.
 - New metric for evaluating results.
 
-![overview](img/Karras2018_overview.png)
+<div style="text-align:center">
+  <img src="img/Karras2018_overview.png">
+</div>
 
 #### Progressive growing of GANs
 - The incremental nature of the training allows the generator to first discover large scale structures on the image distribution, and then shift attention to finer details.
@@ -20,7 +22,10 @@ Four main contributions:
   - By increasing resolution little by little, the network is constantly faced with a little more difficult task than the previous one. E.g. switch from 32x32 to 64x64 is easier than train the network on 64x64 images from scratch. Every subsequent task is simpler compared to the end goal of discovering a mapping from latent space to HD images. _Divide et impera_
   - Most of the iterations are done at low resolution, and comparable results quality (using as a baseline a non-growing model) is obtained 2-6 times faster (the greater the resolution, the more the speedup).
 - The scaling of the network to a higher resolution is done by fade new layers in smoothly.
-![model](img/karras2018_model.png)
+
+<div style="text-align:center">
+<img align="center" src="img/karras2018_model.png">
+</div>
 (a) the network that operates on 16x16 images. (b) during transaction from 16x16 to 32x32 the new layers are treated as residual blocks, whose weight &alpha; increase linearly from 0 to 1. The image resolution is doubled or halved using neighbor filtering and average pooling respectively. During a resolution translation the model _interpolates_ between two images at the same resolution. (c) the model that operates on 32x32 images.
   - <span style="color:deepskyblue">How much iterations are required in the (b) phase?</span>
   - <span style="color:deepskyblue">The network is fine tuned at the new resolution in the (c) phase?</span>
@@ -47,9 +52,9 @@ The aim is to discourage unhealthy competition between generator and discriminat
   - Doing this initialization is beneficial, and related to the scale-invariant SGD &larr; often the learning rate is too big and too small at the same time (the mainly used optimized RMSProp and Adam normilize a gradient update by its estimated standard deviation, making the update independent of the scale of the parameter. However, if some parameters have a larger dynamic range than others, they'll take more time to adjust). Using this approach lead to the same _learning speed_ for all the parameters.
 - Pixelwise feature vector normalization in generator
   - Feature vectors of each pixel in the generator (after each convolutional layer) are normalized to unit length, using the following formula:
-
-  ![eq1](img/karras2018_eq1.png)
-
+  <div style="text-align:center">
+    <img src="img/karras2018_eq1.png">
+  </div>
   where:<br>&epsilon; = 10<sup>-8</sup><br>a<sub>x,y</sub> is the value of the pixel (x,y)<br>b<sub>x,y</sub> is the new value<br>N is the number of feature maps (channels)
   - This normalization does not change the results much, but prevents the escalation of the gradient very effectively when needed.
 
