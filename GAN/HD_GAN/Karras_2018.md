@@ -17,7 +17,7 @@ Four main contributions:
   <img src="img/Karras2018_overview.png">
 </p>
 
-#### Progressive growing of GANs
+### Progressive growing of GANs
 - The incremental nature of the training allows the generator to first discover large scale structures on the image distribution, and then shift attention to finer details.
 - Generator and discriminator are mirror images of each other.
 - Progressive growing has several benefits:
@@ -33,7 +33,7 @@ Four main contributions:
   - <span style="color:deepskyblue">How much iterations are required in the (b) phase?</span>
   - <span style="color:deepskyblue">The network is fine tuned at the new resolution in the (c) phase?</span>
 
-#### Increasing variation using minibatch standard deviation
+### Increasing variation using minibatch standard deviation
 - Variation is commonly increased by minibatch discrimination ([paper](https://arxiv.org/abs/1606.03498), [useful blog post](https://www.inference.vc/understanding-minibatch-discrimination-in-gans/)), but this approach is difficult.
 - The proposed method drastically simplify the minibatch discrimination approach, also improving variation of generated samples.
 
@@ -46,7 +46,7 @@ Algorithm:
 
 The calculation performs better if it's done in the last layers of the discriminator. The additional feature map gives an estimation of the variance of the minibatch &rarr; the  higher the variance, the best the performance of the model (no mode collapse in similar patterns).
 
-#### Normalization in generator and discriminator
+### Normalization in generator and discriminator
 The aim is to discourage unhealthy competition between generator and discriminator. E.g. it is observed that mode collapse tend to happen very quickly in training, over a course of a dozen of minibatches. Mode collapse starts when the discriminator overshoot, leading to exaggerated gradients, staring an unhealthy competition where the signal magnitudes escalate in both networks (in early phases of training the discriminator is highly advantaged, since the manifolds where real and fake data reside can be separated trivially, especially if the space is highly dimensional).
 
 - Equalized learning rate
@@ -58,21 +58,25 @@ The aim is to discourage unhealthy competition between generator and discriminat
   <p align="center">
     <img src="img/karras2018_eq1.png">
   </p>
-  where:<br>&epsilon; = 10<sup>-8</sup><br>a<sub>x,y</sub> is the value of the pixel (x,y)<br>b<sub>x,y</sub> is the new value<br>N is the number of feature maps (channels)
+
+    - where:\
+  &epsilon; = 10<sup>-8</sup><br>a<sub>x,y</sub> is the value of the pixel (x,y)\
+  b<sub>x,y</sub> is the new value<br>N is the number of feature maps (channels)
+
   - This normalization does not change the results much, but prevents the escalation of the gradient very effectively when needed.
 
-#### Multiscale statistical similarity for assessing GAN results.
+### Multiscale statistical similarity for assessing GAN results.
 - Intuition &rarr; the generator should produce images similar to the real images (at the level of image structure) over all scales.
 - The aim is to study this correlation, considering the multiscale statistical similarity between distributions of local image patches drawn from Laplacian pyramid, starting from 16x16 to full resolution.
 - 16.384 images (<span style="color:deepskyblue">16.384 are the real images, the fake images or the sum of the two?</span>) are randomly chosen, and 128 descriptors are extracted from each Laplacian pyramid level (~2.1M descriptors per level). A descriptor is a 7x7 pixel neighborhood, with 3 color channels.
 - Each descriptor of every layer is normalized with the mean and the standard deviation of each color channel, and then the statistical similarity is computed using the sliced Wasserstein distance (SWD) ([paper](https://link.springer.com/chapter/10.1007/978-3-642-24785-9_37), [useful blog post](http://www.numerical-tours.com/matlab/optimaltransp_4_matching_sliced/)).
 - A small Wasserstein distance indicates that the distribution of real and generated patches is similar. Small distance in the patches obtained from images at the 16x16 resolution indicates similarity in the large scale structure, while patches from higher resolutions encode information about pixel-level attributes, such as sharpness of edges or noise.
 
-#### Discussion
+### Discussion
 - Progressive growing let the model to converge to a considerable better optimum. This can be explained by an implicit form of curriculum learning, that is imposed by the gradually increasing network capacity. First the model performs the simplest tasks (generation at very low resolutions), and then the complexity of the problem is gradually and slightly increased at every resolution rise.
 - Progressive growing reduces the total training time, and the speedup is proportional to the output resolution.
 - There is a long way to true photorealism &rarr; there is room for improvements in the micro-structure of the images.
 
 
-#### Further reading
+### Further reading
 - [Autoencoder for removing JPEG artifacts](https://arxiv.org/abs/1606.08921)
