@@ -29,6 +29,7 @@ Four main contributions:
 <p align="center">
 <img align="center" src="img/karras2018_model.png">
 </p>
+
 (a) the network that operates on 16x16 images. (b) during transaction from 16x16 to 32x32 the new layers are treated as residual blocks, whose weight &alpha; increase linearly from 0 to 1. The image resolution is doubled or halved using neighbor filtering and average pooling respectively. During a resolution translation the model _interpolates_ between two images at the same resolution. (c) the model that operates on 32x32 images.
   - <span style="color:deepskyblue">How much iterations are required in the (b) phase?</span>
   - <span style="color:deepskyblue">The network is fine tuned at the new resolution in the (c) phase?</span>
