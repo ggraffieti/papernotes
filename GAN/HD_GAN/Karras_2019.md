@@ -27,8 +27,9 @@ y<sub>&#95;,i</sub> = scalar component of style _y_ &rarr; _y_ is 2*k dimensiona
 <p align="center">
   <img src="img/karras2019_model.png">
 </p>
-A block = affine transforms<br>B blocks = learned per-channel scaling factor.
 
+A block = affine transforms\
+B blocks = learned per-channel scaling factor.
 
 - The network does not benefit from the introduction of latent code as input. The style is solely controlled by AdaIN layers.
 - The AdaIN layers perform normalization (each channel is normalized to zero mean and unit variance), and only then scales and biases based on style are performed. Each style controls only one convolution, before being overridden by the next AdaIN operator.
@@ -65,11 +66,12 @@ If we divide the interpolation in smaller and smaller segments, we can estimate 
 <p align="center">
 <img src="img/karras2019_eq3.png">
 </p>
-where:<br>
-z<sub>1</sub>, z<sub>2</sub> ~ P(z)<br>
-_t_ ~ U(0,1)<br>
-_d_(&middot;, &middot;) evaluates the perceptual distance between 2 images<br>
-slerp = spherical interpolation<br>
+
+where:\
+z<sub>1</sub>, z<sub>2</sub> ~ P(z)\
+_t_ ~ U(0,1)\
+_d_(&middot;, &middot;) evaluates the perceptual distance between 2 images\
+slerp = spherical interpolation\
 lerp = linear interpolation
 
 **Linear separability**
@@ -79,11 +81,12 @@ lerp = linear interpolation
 <p align="center">
 exp(&Sigma;<sub>i</sub> H(Y<sub>i</sub> | X<sub>i</sub>) )
 </p>
-where:\
-i are the 40 attributes\
-X are the classes predicted by the SVM for the i-th attribute\
-Y are the classes predicted by the pre-trained classifier.\
-H(&middot;|&middot;) is the conditional entropy ([wiki](https://en.wikipedia.org/wiki/Conditional_entropy), [blog post](https://math.stackexchange.com/questions/770709/understanding-conditional-entropy-intuitively-hyx-x-vs-hyx))
+
+  where:\
+  i are the 40 attributes\
+  X are the classes predicted by the SVM for the i-th attribute\
+  Y are the classes predicted by the pre-trained classifier.\
+  H(&middot;|&middot;) is the conditional entropy ([wiki](https://en.wikipedia.org/wiki/Conditional_entropy), [blog post](https://math.stackexchange.com/questions/770709/understanding-conditional-entropy-intuitively-hyx-x-vs-hyx))
 
 - This metric tells how much additional information is required to determine the true class of a sample given that it is known in which side of the hyperplane it lies (calculated by the SVM).
 
