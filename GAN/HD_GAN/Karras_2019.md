@@ -91,5 +91,20 @@ exp(&Sigma;<sub>i</sub> H(Y<sub>i</sub> | X<sub>i</sub>) )
 
 - This metric tells how much additional information is required to determine the true class of a sample given that it is known in which side of the hyperplane it lies (calculated by the SVM).
 
+### Truncation trick in &Wscr;
+- If the distribution of training data is considered, it is clear that areas of low density are poorly represented and thus likely to be difficult for the generator to learn. This is still a significant open problem in all generative models.
+- It is known that drawing latent vectors from a truncated, or shrunk latent space tends to improve image quality, at the cost of some variation loss.
+- A similar strategy is followed, first calculating the center of mass of &Wscr; as w&#772; = &Eopf;<sub>z~P(z)</sub>(_f_(z)). In case of faces dataset, this represents a sort of average face. The deviation of a given w from the center can be scaled as w' = w&#772;+ _&psi;_(w − w&#772;), where _&psi;_ < 1.
+
+<p align="center">
+<img src="img/karras2019_psi.png">
+</p>
+
+The effect of truncation trick as a function of style scale _&psi;_. When we fade _&psi;_ &rarr; 0, all faces converge to the “mean” face. This face is similar for all trained networks, and the interpolation towards it never seems to cause artifacts. By applying negative scaling to styles, we get the corresponding opposite or _anti-face_. It is interesting that various high-level attributes often flip between the opposites, including viewpoint, glasses, age, coloring, hair length, and often gender.
+
 ### Discussion
-todo 
+- Style-based image synthesis is in every way superior to traditional GANs generators, in the field of image synthesis. This is proved in terms of established quality metrics, in many generations task (faces, bedrooms, ...)
+- The main reasons for this superior performance are the separation of high-level attributes and stochastic effects
+  - Style is inserted throughout the network, and based on the insertion position it controls only some attributes of the image. Stochastic effects such as hairs position are leaved to random noise inserted after each convolution.
+- Another reason of the model superiority is the linearity of the intermediate latent space &Wscr;. In particular, the disentangled latent space improves the understanding and controllability of GAN synthesis.
+- The proposed average path length metric could be used as a regularizer during training, since more linear latent space yields better results.
