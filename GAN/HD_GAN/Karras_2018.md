@@ -1,5 +1,8 @@
 [[project](https://research.nvidia.com/publication/2017-10_Progressive-Growing-of)] [[paper](https://arxiv.org/abs/1710.10196)] [[code](https://github.com/tkarras/progressive_growing_of_gans)] [[video](https://www.youtube.com/watch?v=G06dEcZ-QTg&feature=youtu.be)]
 
+Inserted: _9 Jul 2019_<br>
+Last revision: _10 Jul 2019_
+
 # Progressive Growing of GANs for Improved Quality, Stability and Variation
 **Tero Karras, Timo Aila, Samuli Laine, Jaakko Lehtinen**
 <br>
