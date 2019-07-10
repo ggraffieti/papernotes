@@ -1,7 +1,7 @@
 [[project](https://research.nvidia.com/publication/2019-06_A-Style-Based-Generator)] [[paper](https://arxiv.org/abs/1812.04948)] [[code](https://github.com/NVlabs/stylegan)] [[video](https://www.youtube.com/watch?v=kSLJriaOumA&feature=youtu.be)]
 
-Inserted:<br>
-Last revision:
+Inserted: _10 Jul 2019_ \
+Last revision: _10 Jul 2019_
 
 # A Style-Based Generator Architecture for Generative Adversarial Networks
 **Tero Karras, Samuli Laine, Timo Ailan**
