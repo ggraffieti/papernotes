@@ -18,8 +18,9 @@ This paper introduces an alternative architecture for the generator network, bor
 <p align="center">
   <img src="img/karras2019_eq1.png">
 </p>
-where:<br>
-x<sub>i</sub> = feature map<br>
+
+where:\
+x<sub>i</sub> = feature map\
 y<sub>&#95;,i</sub> = scalar component of style _y_ &rarr; _y_ is 2*k dimensional, k = number of feature maps on the layer.
 
 - This is similar to style transfer, but the style vector in computed from a feature vector in the latent space, and not from an image.
