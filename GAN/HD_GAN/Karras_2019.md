@@ -1,7 +1,7 @@
 [[project](https://research.nvidia.com/publication/2019-06_A-Style-Based-Generator)] [[paper](https://arxiv.org/abs/1812.04948)] [[code](https://github.com/NVlabs/stylegan)] [[video](https://www.youtube.com/watch?v=kSLJriaOumA&feature=youtu.be)]
 
 Inserted: _10 Jul 2019_ \
-Last revision: _10 Jul 2019_
+Last revision: _11 Jul 2019_
 
 # A Style-Based Generator Architecture for Generative Adversarial Networks
 **Tero Karras, Samuli Laine, Timo Ailan**
@@ -94,13 +94,13 @@ exp(&Sigma;<sub>i</sub> H(Y<sub>i</sub> | X<sub>i</sub>) )
 ### Truncation trick in &Wscr;
 - If the distribution of training data is considered, it is clear that areas of low density are poorly represented and thus likely to be difficult for the generator to learn. This is still a significant open problem in all generative models.
 - It is known that drawing latent vectors from a truncated, or shrunk latent space tends to improve image quality, at the cost of some variation loss.
-- A similar strategy is followed, first calculating the center of mass of &Wscr; as w&#772; = &Eopf;<sub>z~P(z)</sub>(_f_(z)). In case of faces dataset, this represents a sort of average face. The deviation of a given w from the center can be scaled as w' = w&#772;+ _&psi;_(w − w&#772;), where _&psi;_ < 1.
+- A similar strategy is followed, first calculating the center of mass of &Wscr; as w&#772; = &Eopf;<sub>z~P(z)</sub>(_f_(z)). In case of faces dataset, this represents a sort of average face. The deviation of a given w from the center can be scaled as w' = w&#772;+ &#120595;(w − w&#772;), where &#120595; < 1.
 
 <p align="center">
 <img src="img/karras2019_psi.png">
 </p>
 
-The effect of truncation trick as a function of style scale _&psi;_. When we fade _&psi;_ &rarr; 0, all faces converge to the “mean” face. This face is similar for all trained networks, and the interpolation towards it never seems to cause artifacts. By applying negative scaling to styles, we get the corresponding opposite or _anti-face_. It is interesting that various high-level attributes often flip between the opposites, including viewpoint, glasses, age, coloring, hair length, and often gender.
+The effect of truncation trick as a function of style scale &#120595;. When we fade &#120595; &rarr; 0, all faces converge to the “mean” face. This face is similar for all trained networks, and the interpolation towards it never seems to cause artifacts. By applying negative scaling to styles, we get the corresponding opposite or _anti-face_. It is interesting that various high-level attributes often flip between the opposites, including viewpoint, glasses, age, coloring, hair length, and often gender.
 
 ### Discussion
 - Style-based image synthesis is in every way superior to traditional GANs generators, in the field of image synthesis. This is proved in terms of established quality metrics, in many generations task (faces, bedrooms, ...)
