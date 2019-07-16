@@ -10,6 +10,9 @@ Inspired by [many people who already shared their paper notes on the web](https:
 - **Deep Learning**
 
 ### Generative Adversarial Networks
+- **Image-to-image translation**
+  - [InstaGAN: Instance-aware Image-to-Image Translation, _Mo et al._ (2019)](GAN/i2i/Mo_2019.md)
+
 - **HD GAN**
   - [High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs, _Wang et al._ (2018)](GAN/HD_GAN/Wang_2018.md)
   - [A Style-Based Generator Architecture for Generative Adversarial Networks, _Karras et al._ (2019)](GAN/HD_GAN/Karras_2019.md)
