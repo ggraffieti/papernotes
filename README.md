@@ -8,6 +8,7 @@ Inspired by [many people who already shared their paper notes on the web](https:
 
 ### Machine Learning
 - **Deep Learning**
+  - [Deep Learning with Differential Privacy, _Abadi et al._ (2016)](ML/DL/Abadi_2016.md)
 
 ### Generative Adversarial Networks
 - **Image-to-image translation**
